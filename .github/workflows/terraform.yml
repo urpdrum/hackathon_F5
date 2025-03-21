@@ -45,11 +45,11 @@ jobs:
       - name: Read destroy configuration
         id: read-destroy-config
         run:
-          DESTRoY="$(jq -r '.${{ inputs.environment }}' ./Infra/desctroy_config.json)"
+          DESTROY="$(jq -r '.${{ inputs.environment }}' ./Infra/destroy_config.json)"
           echo "destroy=$(echo $DESTROY)" >> $GITHUB_OUTPUT
 
       - name: Terraform Init
-        run:
+        run: |
           cd infra && terraform init \
             -backend-config="bucket=${{ inputs.aws-statefile-s3-bucket }}" \
             -backend-config="Key=${{ github.event.repository.name}}" \
