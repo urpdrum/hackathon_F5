@@ -1,1 +1,1 @@
-bucket_name="prod-sa-east-1-builrun-paciente"
+bucket_name="prod-sa-east-1-buildrun-paciente"
