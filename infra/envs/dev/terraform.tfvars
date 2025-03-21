@@ -1,1 +1,1 @@
-bucket_name="dev-sa-east-1-buildrun-paciente"
+bucket_name="dev-us-east-1-buildrun-paciente"
