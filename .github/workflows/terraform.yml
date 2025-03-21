@@ -134,10 +134,18 @@ jobs:
       - name: Terraform Init
         run: |
           cd infra && terraform init \
-            -backend-config="bucket=${{ inputs.aws-statefile-s3-bucket }}" \
-            -backend-config="key=${{ github.event.repository.name }}" \
-            -backend-config="region=${{ inputs.aws-region }}" \
-            -backend-config="dynamodb_table=${{ inputs.aws-lock-dynamodb-table }}"
+            -backend-config="bucket=urpdrum-us-east-1-terraform-statefile" \
+            -backend-config="key=hackathon_F5" \
+            -backend-config="region=us-east-1" \
+            -backend-config="dynamodb_table=urpdrum-us-east-1-terraform-lock"
+  shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+  env:
+    TERRAFORM_CLI_PATH: /home/runner/work/_temp/eac1973a-6be4-48ea-9098-3487d6e8ab85
+    AWS_DEFAULT_REGION: us-east-1
+    AWS_REGION: us-east-1
+    AWS_ACCESS_KEY_ID: ***
+    AWS_SECRET_ACCESS_KEY: ***
+    AWS_SESSION_TOKEN: ***
 
       - name: Terraform Validate
         run: terraform validate
